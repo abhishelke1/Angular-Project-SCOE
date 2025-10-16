@@ -1,0 +1,113 @@
+<!-- Live animated gradient layer -->
+<div class="live-gradient" id="liveGradient" aria-hidden="true"></div>
+
+<!-- Particle canvas background -->
+<canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- Decorative blobs -->
+<svg class="decor-svg" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="dg" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffd700" stop-opacity="0.16" />
+      <stop offset="1" stop-color="#1e90ff" stop-opacity="0.16" />
+    </linearGradient>
+  </defs>
+  <path class="blobA" d="M40 120C100 40 260 0 380 30C500 60 560 170 520 270C480 370 320 420 200 380C80 340 20 180 40 120Z" fill="url(#dg)" />
+  <path class="blobB" d="M860 600C900 520 940 450 920 370C900 290 820 260 740 280C660 300 620 380 640 460C660 540 820 680 860 600Z" fill="url(#dg)" />
+</svg>
+
+<!-- Main card section -->
+<main class="wrap">
+  <section class="card" id="card" aria-labelledby="title">
+    <div class="card-glow" aria-hidden="true"></div>
+
+    <header class="card-head">
+      <h1 id="title">Welcome Back</h1>
+      <p class="lead">Sign in to continue your journey</p>
+    </header>
+
+    <!-- Login Form -->
+    <form (ngSubmit)="onLogin()" class="login-form" novalidate>
+      <label class="input-group" for="email">
+        <span class="icon" aria-hidden="true">✉️</span>
+        <input id="email" type="email" name="email" [(ngModel)]="email" placeholder="Email" required autocomplete="username" />
+        <span class="underline" aria-hidden="true"></span>
+      </label>
+
+      <label class="input-group password-group" for="password">
+        <span class="icon" aria-hidden="true">🔒</span>
+
+        <!-- Password input -->
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Password"
+          required
+          autocomplete="current-password"
+          aria-describedby="pwStrength"
+        />
+
+        <!-- Show/Hide Password Button -->
+        <button
+          type="button"
+          id="showPassBtn"
+          class="show-pass"
+          aria-label="Show password"
+          aria-pressed="false"
+          title="Click to toggle, hold to peek"
+        >
+          <svg class="eye" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              class="eye-outline"
+              d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+            <circle class="eye-pupil" cx="12" cy="12" r="3" fill="currentColor"></circle>
+          </svg>
+        </button>
+
+        <span class="underline" aria-hidden="true"></span>
+
+        <div class="pw-meta" id="pwStrength">
+          <div class="strength">
+            <span class="strength-bar" aria-hidden="true" style="width:4%"></span>
+            <span class="strength-text">Very Weak</span>
+          </div>
+        </div>
+      </label>
+
+      <button type="submit" class="btn login-btn" aria-label="Login">
+        <span class="btn-left">
+          <svg class="arrow" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+          Login
+        </span>
+        <span class="btn-right">Fast</span>
+      </button>
+    </form>
+
+    <div class="or">Or continue with</div>
+
+    <div class="socials">
+      <button class="btn social google" type="button"><span class="sicon">G</span> Continue with Google</button>
+      <button class="btn social fb" type="button"><span class="sicon">f</span> Continue with Facebook</button>
+    </div>
+
+    <div class="foot">
+      <p>Don't have an account?</p>
+      <button class="btn ghost" (click)="goToSignup()">Create account +</button>
+    </div>
+  </section>
+</main>
+
+<!-- Reduce motion toggle -->
+<div class="controls" aria-hidden="true">
+  <label><input id="reduceMotion" type="checkbox" /> Reduce motion</label>
+</div>

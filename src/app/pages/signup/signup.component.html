@@ -1,0 +1,100 @@
+<!-- Animated background -->
+<div class="live-gradient-signup" id="liveGradientSignup" aria-hidden="true"></div>
+<canvas id="particleCanvasSignup" class="particles-signup" aria-hidden="true"></canvas>
+
+<!-- Decorative blobs -->
+<svg class="blobs-signup" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="dgSignup" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffd700" stop-opacity="0.16" />
+      <stop offset="1" stop-color="#1e90ff" stop-opacity="0.16" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M40 120C100 40 260 0 380 30C500 60 560 170 520 270C480 370 320 420 200 380C80 340 20 180 40 120Z"
+    fill="url(#dgSignup)"
+  />
+  <path
+    d="M860 600C900 520 940 450 920 370C900 290 820 260 740 280C660 300 620 380 640 460C660 540 820 680 860 600Z"
+    fill="url(#dgSignup)"
+  />
+</svg>
+
+<!-- Signup Card -->
+<main class="wrap-signup">
+  <section class="card-signup" id="signupCard" aria-labelledby="signupTitle">
+    <div class="card-signup-glow" aria-hidden="true"></div>
+
+    <header class="card-head-signup">
+      <h2 id="signupTitle">Create account</h2>
+      <p>Join us — quick signup</p>
+    </header>
+
+    <form (ngSubmit)="onSignup()" novalidate>
+      <label class="input-group-signup">
+        <span class="icon">👤</span>
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="name"
+          placeholder="Full name"
+          required
+          autocomplete="name"
+        />
+        <span class="underline-signup"></span>
+      </label>
+
+      <label class="input-group-signup">
+        <span class="icon">✉️</span>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Email"
+          required
+          autocomplete="email"
+        />
+        <span class="underline-signup"></span>
+      </label>
+
+      <label class="input-group-signup password-group-signup">
+        <span class="icon">🔒</span>
+        <input
+          id="signupPassword"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Password"
+          required
+          autocomplete="new-password"
+          (input)="updateStrength()"
+        />
+        <span class="underline-signup"></span>
+
+        <div class="pw-meta-signup" id="pwStrengthSignup">
+          <div class="strength-signup">
+            <span class="strength-bar-signup" [style.width.%]="strengthPercent"></span>
+            <span class="strength-text-signup">{{ strengthLabel }}</span>
+          </div>
+        </div>
+      </label>
+
+      <button type="submit" class="btn-signup submit-btn-signup">
+        <span>Signup</span>
+        <span class="btn-right">→</span>
+      </button>
+    </form>
+
+    <div class="or-signup">Already have an account?</div>
+    <div class="foot-signup">
+      <p>Go back to login</p>
+      <button class="ghost-signup" (click)="goToLogin()">Go to Login</button>
+    </div>
+  </section>
+</main>
+
+<div class="reduce-motion-toggle">
+  <label>
+    <input id="reduceMotionSignup" type="checkbox" (change)="toggleMotion($event)" /> Reduce motion
+  </label>
+</div>
